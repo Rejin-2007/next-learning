@@ -2,15 +2,15 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { createClient } from "@/prismicio";
 import type { Metadata, ResolvingMetadata } from 'next'
- 
+import Header from "@/components/Header";
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient()
-  const page = await client.getSingle("settings")
+  const setting = await client.getSingle("settings")
   return {
-    title: page.data.site_title || "",
-    description : page.data.meta_description,
+    title: setting.data.title || "",
+    description : setting.data.description,
     openGraph: {
-      images: [page.data.og_image.url || ""],
+      images: [setting.data.image.url || ""],
     },
   }
 }
@@ -25,16 +25,18 @@ const geistMono = Geist_Mono({
 });
 
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <header>Header!!!!!!1</header>
+        <Header />
+
         {children}
         <footer>Footer!!</footer>
       </body>

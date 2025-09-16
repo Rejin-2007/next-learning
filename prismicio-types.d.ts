@@ -70,77 +70,41 @@ type ContentRelationshipFieldWithData<
 }[Exclude<TCustomType[number], string>["id"]];
 
 /**
- * Item in *settings → nav*
- */
-export interface SettingsDocumentDataNavItem {
-  /**
-   * link field in *settings → nav*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.nav[].link
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-
-  /**
-   * label field in *settings → nav*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.nav[].label
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  label: prismic.KeyTextField;
-}
-
-/**
  * Content for settings documents
  */
 interface SettingsDocumentData {
   /**
-   * Site title field in *settings*
+   * Title field in *settings*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: settings.site_title
+   * - **API ID Path**: settings.title
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  site_title: prismic.KeyTextField;
+  title: prismic.KeyTextField;
 
   /**
-   * meta description field in *settings*
+   * description field in *settings*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: settings.meta_description
+   * - **API ID Path**: settings.description
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  meta_description: prismic.KeyTextField;
+  description: prismic.KeyTextField;
 
   /**
-   * og image field in *settings*
+   * image field in *settings*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: settings.og_image
+   * - **API ID Path**: settings.image
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
-  og_image: prismic.ImageField<never>;
-
-  /**
-   * nav field in *settings*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.nav[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  nav: prismic.GroupField<Simplify<SettingsDocumentDataNavItem>>;
+  image: prismic.ImageField<never>;
 }
 
 /**
@@ -181,11 +145,6 @@ declare module "@prismicio/client" {
   }
 
   namespace Content {
-    export type {
-      SettingsDocument,
-      SettingsDocumentData,
-      SettingsDocumentDataNavItem,
-      AllDocumentTypes,
-    };
+    export type { SettingsDocument, SettingsDocumentData, AllDocumentTypes };
   }
 }
