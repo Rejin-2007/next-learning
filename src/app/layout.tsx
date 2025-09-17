@@ -3,6 +3,7 @@ import "./globals.css";
 import { createClient } from "@/prismicio";
 import type { Metadata, ResolvingMetadata } from 'next'
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient()
   const setting = await client.getSingle("settings")
@@ -36,9 +37,8 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Header />
-
         {children}
-        <footer>Footer!!</footer>
+        <Footer />
       </body>
     </html>
   );

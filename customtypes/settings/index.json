@@ -27,6 +27,26 @@
           "constraint": {},
           "thumbnails": []
         }
+      },
+      "navitems": {
+        "type": "Group",
+        "config": {
+          "label": "navitems",
+          "repeat": true,
+          "fields": {
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
       }
     }
   }

@@ -70,6 +70,21 @@ type ContentRelationshipFieldWithData<
 }[Exclude<TCustomType[number], string>["id"]];
 
 /**
+ * Item in *settings → navitems*
+ */
+export interface SettingsDocumentDataNavitemsItem {
+  /**
+   * Link field in *settings → navitems*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navitems[].link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
  * Content for settings documents
  */
 interface SettingsDocumentData {
@@ -105,6 +120,17 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * navitems field in *settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navitems[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  navitems: prismic.GroupField<Simplify<SettingsDocumentDataNavitemsItem>>;
 }
 
 /**
@@ -145,6 +171,11 @@ declare module "@prismicio/client" {
   }
 
   namespace Content {
-    export type { SettingsDocument, SettingsDocumentData, AllDocumentTypes };
+    export type {
+      SettingsDocument,
+      SettingsDocumentData,
+      SettingsDocumentDataNavitemsItem,
+      AllDocumentTypes,
+    };
   }
 }
